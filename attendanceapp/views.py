@@ -1,6 +1,5 @@
 import re
 import base64
-from tkinter import E
 import json
 from turtle import st
 from django.http.response import Http404
