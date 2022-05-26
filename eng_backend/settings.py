@@ -48,6 +48,11 @@ INSTALLED_APPS = [
      'cloudinary_storage',
       'django.contrib.staticfiles',
     'cloudinary',
+    'phonenumber_field',
+     "dj_rest_auth",
+    "allauth",
+    "allauth.account",
+   "dj_rest_auth.registration",   "allauth.socialaccount",   "allauth.socialaccount.providers.google",
 ]
 
 MIDDLEWARE = [
@@ -69,6 +74,19 @@ CLOUDINARY_STORAGE  = {
   'API_SECRET' : 'BkmjJYC6N5XkzCMF-hMKBpqwfnE',
 
 }
+SOCIALACCOUNT_PROVIDERS = {
+   'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+       }
+    }
+ }
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_EMAIL_REQUIRED = False
 
 SITE_ID = 1
 ROOT_URLCONF = 'eng_backend.urls'
@@ -76,9 +94,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 AUTH_USER_MODEL = 'authapp.myuser'
 CELERY_BROKER_URL = 'amqp://localhost'
-ELERY_TIMEZONE = "Australia/Tasmania"
+CELERY_TIMEZONE = "Australia/Tasmania"
 CELERY_TASK_TRACK_STARTED = True
-CELERY_TASK_TIME_LIMIT = 30 * 60
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

@@ -23,5 +23,6 @@ urlpatterns = [
     path('',include('attendanceapp.urls')),
      path('authapp/',include('authapp.urls')),
      path('admin/', admin.site.urls),
+   path(r'^accounts/', include('allauth.urls'), name='socialaccount_signup'),
 
 ]

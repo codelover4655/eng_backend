@@ -14,6 +14,10 @@ from rest_framework.authentication import TokenAuthentication
 from django.conf import settings
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from dj_rest_auth.registration.views import SocialLoginView
+from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+
 
 
 User =get_user_model()
@@ -40,10 +44,17 @@ class RegisterView(APIView):
         if ss.is_valid():
             ss.save()
             print(ss.instance)
-            x=create_auth_token(ss.instance)    # need to explore
+            x=create_auth_token(ss.instance)
+                # need to explore
             return Response({'Token': x,'name':ss.instance.first_name},status=status.HTTP_200_OK)
         else:
             return Response(ss.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class GoogleLogin(SocialLoginView):
+    authentication_classes = [] # disable authentication
+    adapter_class = GoogleOAuth2Adapter
+    callback_url = "http://127.0.0.1:8000/"
+    client_class = OAuth2Client
 
 
 class LoginView(APIView):
