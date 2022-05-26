@@ -1,7 +1,5 @@
-from django.http.response import Http404
-from django.http import JsonResponse
+
 from rest_framework import permissions
-from rest_framework import generics,mixins
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
@@ -9,11 +7,8 @@ from .serializers import *
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login,get_user_model,logout
-from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
-from django.conf import settings
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
+
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from dj_rest_auth.registration.views import SocialLoginView
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client

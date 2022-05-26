@@ -1,18 +1,14 @@
-import re
+
 import base64
-import json
-from turtle import st
-from django.http.response import Http404
-from django.http import JsonResponse
-from msrest import Serializer
+
 from .task import send_match_mail_found
 from .task import  send_match_mail_missing
 from rest_framework import permissions
-from rest_framework import generics,mixins
+from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
-from rest_framework.parsers import MultiPartParser, FormParser,JSONParser      # we need form parsser as we are sending a form from frontend 
+     # we need form parsser as we are sending a form from frontend 
 from .serializers import *
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
@@ -20,27 +16,13 @@ from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login,get_user_model
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 from collections import OrderedDict
 from django.core.files.base import ContentFile
 from .models import *
-from django.views.decorators.clickjacking import xframe_options_exempt
-import asyncio
-import io
-import glob
-import os
-import sys
-import time
 import uuid
 import requests
-from urllib.parse import urlparse
-from io import BytesIO
-from PIL import Image, ImageDraw
 from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
-from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, QualityForRecognition
 KEY = "96aa79f0f2be4acca4208632a8e201ee"
 ENDPOINT = "https://engage4655.cognitiveservices.azure.com/"
 PERSON_GROUP_ID = str(uuid.uuid4())
