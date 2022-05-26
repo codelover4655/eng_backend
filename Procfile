@@ -1,4 +1,4 @@
 web: gunicorn eng_backend.wsgi
-release: pyhton manage.py makemigrations --noinput
-release: pyhton manage.py migrate --noinput
-release: pyhton manage.py collectstatic --noinput
+release: python manage.py makemigrations --noinput
+release: python manage.py migrate --noinput
+release: python manage.py collectstatic --noinput
