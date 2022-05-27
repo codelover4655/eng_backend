@@ -46,11 +46,11 @@ User =get_user_model()
 
 
 
-username='tushar.singhal.mec19@itbhu.ac.in'
-password='OHW3653GO'
+username='missingpeople4655@gmail.com'
+password='missingpeople'
 
                                                 #no change needed
-def send_mail(html=None,subject='Yeah We Found A Match',from_email='mathtutor4655@gmail.com',to_emails=[],text=''):
+def send_mail(html=None,subject='Yeah We Found A Match',from_email='missingpeople4655@gmail.com',to_emails=[],text=''):
     assert isinstance(to_emails,list)
     msg=MIMEMultipart('alternative')
     msg['From']=from_email
@@ -70,7 +70,7 @@ def send_mail(html=None,subject='Yeah We Found A Match',from_email='mathtutor465
 
 
 
-def send_mail1(html=None,subject='Yeah We Found A Match',from_email='mathtutor4655@gmail.com',to_emails=[],text=''):
+def send_mail1(html=None,subject='Yeah We Found A Match',from_email='missingpeople4655@gmail.com',to_emails=[],text=''):
     assert isinstance(to_emails,list)
     msg=MIMEMultipart('alternative')
     msg['From']=from_email

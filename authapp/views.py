@@ -8,7 +8,8 @@ from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login,get_user_model,logout
 from rest_framework.authentication import TokenAuthentication
-
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from dj_rest_auth.registration.views import SocialLoginView
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
@@ -45,6 +46,7 @@ class RegisterView(APIView):
         else:
             return Response(ss.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class GoogleLogin(SocialLoginView):
     authentication_classes = [] # disable authentication
     adapter_class = GoogleOAuth2Adapter
