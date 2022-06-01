@@ -23,8 +23,8 @@ import uuid
 import requests
 from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
-KEY = "96aa79f0f2be4acca4208632a8e201ee"
-ENDPOINT = "https://engage4655.cognitiveservices.azure.com/"
+KEY = "bb41a69036b149fe9a371de9550830ab"
+ENDPOINT = "https://local-system.cognitiveservices.azure.com/"
 PERSON_GROUP_ID = str(uuid.uuid4())
 face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 face_client.person_group.create(person_group_id=PERSON_GROUP_ID, name=PERSON_GROUP_ID)
@@ -204,12 +204,12 @@ class VerifyImage(generics.GenericAPIView):
                  fc1=detected_faces[0].face_id
                  std.faceid1=fc1
                  std.save()
-                 external_api_url = 'https://engage4655.cognitiveservices.azure.com/face/v1.0/verify'
+                 external_api_url = 'https://local-system.cognitiveservices.azure.com/face/v1.0/verify'
                  data1={
                    'faceId1': std.faceid1,
                     'faceId2': std.faceid2,
                      }
-                 res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"96aa79f0f2be4acca4208632a8e201ee","Content-Type":"application/json"})
+                 res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"bb41a69036b149fe9a371de9550830ab","Content-Type":"application/json"})
                  print(res.json())
                  data_from_api=res.json()
                  print(data_from_api)
@@ -297,12 +297,12 @@ class Testing(generics.GenericAPIView):
             for y in detected_faces:
                 z+=1
                 x_id=detected_faces[z].face_id
-                external_api_url = 'https://engage4655.cognitiveservices.azure.com/face/v1.0/verify'
+                external_api_url = 'https://local-system.cognitiveservices.azure.com/face/v1.0/verify'
                 data1={
                    'faceId1': fid1 ,
                     'faceId2': x_id,
                      }
-                res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"96aa79f0f2be4acca4208632a8e201ee","Content-Type":"application/json"})
+                res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"bb41a69036b149fe9a371de9550830ab","Content-Type":"application/json"})
                 data_from_api=res.json()
                 
                 if data_from_api['isIdentical']==True:
@@ -438,12 +438,12 @@ class MatchesFoundface(generics.GenericAPIView):
             for y in detected_faces:
                 z+=1
                 x_id=detected_faces[z].face_id
-                external_api_url = 'https://engage4655.cognitiveservices.azure.com/face/v1.0/verify'
+                external_api_url = 'https://local-system.cognitiveservices.azure.com/face/v1.0/verify'
                 data1={
                    'faceId1': fid1 ,
                     'faceId2': x_id,
                      }
-                res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"96aa79f0f2be4acca4208632a8e201ee","Content-Type":"application/json"})
+                res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"bb41a69036b149fe9a371de9550830ab","Content-Type":"application/json"})
                 data_from_api=res.json()
                 print(data_from_api)
                 
@@ -485,12 +485,12 @@ class MatchesINFoundfaces(generics.GenericAPIView):
             for y in detected_faces:
                 z+=1
                 x_id=detected_faces[z].face_id
-                external_api_url = 'https://engage4655.cognitiveservices.azure.com/face/v1.0/verify'
+                external_api_url = 'https://local-system.cognitiveservices.azure.com/face/v1.0/verify'
                 data1={
                    'faceId1': fid1 ,
                     'faceId2': x_id,
                      }
-                res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"96aa79f0f2be4acca4208632a8e201ee","Content-Type":"application/json"})
+                res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"bb41a69036b149fe9a371de9550830ab","Content-Type":"application/json"})
                 data_from_api=res.json()
                 print(data_from_api)
                 if data_from_api.get('isIdentical','False')==True:

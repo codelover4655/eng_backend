@@ -26,7 +26,7 @@ from PIL import Image, ImageDraw
 from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, QualityForRecognition
-ENDPOINT = "https://engage4655.cognitiveservices.azure.com/"
+ENDPOINT = "https://local-system.cognitiveservices.azure.com/"
 PERSON_GROUP_ID = str(uuid.uuid4())
 
 KEY = "96aa79f0f2be4acca4208632a8e201ee"
@@ -111,12 +111,12 @@ def send_match_mail_missing(self,id):
             for y in detected_faces:
                 z+=1
                 x_id=detected_faces[z].face_id
-                external_api_url = 'https://engage4655.cognitiveservices.azure.com/face/v1.0/verify'
+                external_api_url = 'https://local-system.cognitiveservices.azure.com/face/v1.0/verify'
                 data1={
                    'faceId1': fid1 ,
                     'faceId2': x_id,
                      }
-                res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"96aa79f0f2be4acca4208632a8e201ee","Content-Type":"application/json"})
+                res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"bb41a69036b149fe9a371de9550830ab","Content-Type":"application/json"})
                 data_from_api=res.json()
                 if data_from_api.get('isIdentical','False')==True:
                     dict[cnt]+=1
@@ -151,12 +151,12 @@ def send_match_mail_found(self,id):
             for y in detected_faces:
                 z+=1
                 x_id=detected_faces[z].face_id
-                external_api_url = 'https://engage4655.cognitiveservices.azure.com/face/v1.0/verify'
+                external_api_url = 'https://local-system.cognitiveservices.azure.com/face/v1.0/verify'
                 data1={
                    'faceId1': fid1 ,
                     'faceId2': x_id,
                      }
-                res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"96aa79f0f2be4acca4208632a8e201ee","Content-Type":"application/json"})
+                res = requests.post(external_api_url, json=data1, headers={"Ocp-Apim-Subscription-Key":"bb41a69036b149fe9a371de9550830ab","Content-Type":"application/json"})
                 data_from_api=res.json()
                 if data_from_api.get('isIdentical','False')==True:
                     dict[cnt]+=1
