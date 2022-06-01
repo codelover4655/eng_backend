@@ -29,7 +29,7 @@ from azure.cognitiveservices.vision.face.models import TrainingStatusType, Perso
 ENDPOINT = "https://local-system.cognitiveservices.azure.com/"
 PERSON_GROUP_ID = str(uuid.uuid4())
 
-KEY = "96aa79f0f2be4acca4208632a8e201ee"
+KEY = "bb41a69036b149fe9a371de9550830ab"
 face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 face_client.person_group.create(person_group_id=PERSON_GROUP_ID, name=PERSON_GROUP_ID)
 
