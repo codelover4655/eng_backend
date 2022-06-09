@@ -42,12 +42,12 @@ User =get_user_model()
 
 
 
-
+'xrozfscjmvpefudv'
 
 
 
 username='missingpeople4655@gmail.com'
-password='missingpeople'
+password='omvbzvedkzoozztz'
 
                                                 #no change needed
 def send_mail(html=None,subject='Yeah We Found A Match',from_email='missingpeople4655@gmail.com',to_emails=[],text=''):
